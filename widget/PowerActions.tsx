@@ -5,18 +5,7 @@ import Hyprland from "gi://AstalHyprland";
 export const themeVar = Variable<string>("catppuccin");
 export default function PowerActions() {
   const hyprland = Hyprland.get_default();
-  const powerAlertDialog = new Gtk.AlertDialog({
-    defaultButton: 0,
-    cancelButton: 0,
-    message: "⏻ Power Off?",
-    buttons: ["Cancel", "Power Off"],
-  });
-  const rebootAlertDialog = new Gtk.AlertDialog({
-    defaultButton: 0,
-    cancelButton: 0,
-    message: "↺ Reboot?",
-    buttons: ["Cancel", "Reboot"],
-  });
+
   return (
     <window
       exclusivity={Astal.Exclusivity.EXCLUSIVE}
@@ -39,42 +28,10 @@ export default function PowerActions() {
       margin={10}
     >
       <box halign={Gtk.Align.CENTER} valign={Gtk.Align.CENTER}>
-        <button
-          cssClasses={["power"]}
-          onClicked={() => {
-            try {
-              powerAlertDialog.choose(
-                App.get_window("PowerActions"),
-                null,
-                (self, res) => {
-                  self?.choose_finish(res) == 1 ? execAsync("poweroff") : null;
-                }
-              );
-              App.get_window("PowerActions")?.hide();
-            } catch (error) {
-              console.error("Failed to choose power action:", error);
-            }
-          }}
-        >
+        <button cssClasses={["power"]} onClicked={() => execAsync("poweroff")}>
           <image iconName="system-shutdown-symbolic" />
         </button>
-        <button
-          cssClasses={["reboot"]}
-          onClicked={() => {
-            try {
-              rebootAlertDialog.choose(
-                App.get_window("PowerActions"),
-                null,
-                (self, res) => {
-                  self?.choose_finish(res) == 1 ? execAsync("reboot") : null;
-                }
-              );
-              App.get_window("PowerActions")?.hide();
-            } catch (error) {
-              console.error("Failed to choose reboot action:", error);
-            }
-          }}
-        >
+        <button cssClasses={["reboot"]} onClicked={() => execAsync("reboot")}>
           <image iconName="system-reboot-symbolic" />
         </button>
         <button
@@ -87,7 +44,9 @@ export default function PowerActions() {
           <image iconName="lock-symbolic" />
         </button>
         <button
-          cssClasses={themeVar().as(t => t == "catppuccin" ? ["swap"] : ["swap", "active"])}
+          cssClasses={themeVar().as((t) =>
+            t == "catppuccin" ? ["swap"] : ["swap", "active"]
+          )}
           onClicked={() =>
             themeVar.set(themeVar.get() == "catppuccin" ? "gruv" : "catppuccin")
           }

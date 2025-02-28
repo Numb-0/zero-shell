@@ -6,7 +6,7 @@ import Dashboard from "./widget/Dashboard";
 import PlayerDashboard from "./widget/PlayerDashboard";
 import Corners from "./widget/Corners";
 import Notifications, { clearLastNotification } from "./widget/Notifications";
-import PowerActions, { themeVar } from "./widget/PowerActions";
+import PowerActions from "./widget/PowerActions";
 
 App.start({
   icons: `${SRC}/assets`,
