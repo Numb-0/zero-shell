@@ -6,7 +6,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = { self, nixpkgs, ags }: 
+  outputs = { nixpkgs, ags }: 
   let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
@@ -16,7 +16,7 @@
       shell = ags.lib.bundle {
         inherit pkgs;
         # This Points to this Flake root directory 
-        src = self;
+        src = ./.;
         name = "nix-0-shell";
         entry = "app.ts";
         gtk4 = true;
@@ -40,8 +40,7 @@
         ];
       };
     };
-    #sdasda
-    # nix develop shell
+    # nix develop
     devShells.${system}.default = pkgs.mkShell {
       buildInputs = [
         # includes astal3 astal4 astal-io by default
