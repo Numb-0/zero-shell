@@ -1,5 +1,4 @@
-.catppuccin {
-  :root {
+.catppuccin ~ * {
   --base00: #24273a;
   --base01: #1e2030;
   --base02: #363a4f;
@@ -16,11 +15,9 @@
   --base0D: #8aadf4;
   --base0E: #c6a0f6;
   --base0F: #f0c6c6;
-  }
 }
 
-.gruv {
-  :root {
+.gruv ~ * {
   --base00: #282828;
   --base01: #3c3836;
   --base02: #504945;
@@ -37,5 +34,4 @@
   --base0D: #83a598;
   --base0E: #d3869b;
   --base0F: #d65d0e;
-  }
 }
