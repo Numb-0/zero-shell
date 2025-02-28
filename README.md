@@ -1,2 +1,2 @@
-# nix-0-shell
-Repo containing the ags app!
+# zero-shell
+Repo containing the ags project
