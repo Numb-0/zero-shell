@@ -16,8 +16,8 @@
       shell = ags.lib.bundle {
         inherit pkgs;
         # This Points to this Flake root directory 
-        src = ./.;
-        name = "nix-0-shell";
+        src = self;
+        name = "zero-shell";
         entry = "app.ts";
         gtk4 = true;
 
@@ -46,7 +46,19 @@
         # includes astal3 astal4 astal-io by default
         (ags.packages.${system}.default.override { 
           extraPackages = [
-            # cherry pick packages
+            ags.packages.${system}.io
+            ags.packages.${system}.apps
+            ags.packages.${system}.apps
+            ags.packages.${system}.battery
+            ags.packages.${system}.hyprland
+            ags.packages.${system}.wireplumber
+            ags.packages.${system}.bluetooth
+            ags.packages.${system}.network
+            ags.packages.${system}.notifd
+            ags.packages.${system}.tray
+            ags.packages.${system}.mpris
+            ags.packages.${system}.cava
+            ags.packages.${system}.powerprofiles
           ];
         })
       ];
