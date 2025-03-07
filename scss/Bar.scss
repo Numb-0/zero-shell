@@ -126,6 +126,15 @@ window.Bar {
     * {
       -gtk-icon-size: 1.2rem;
     }
+    popover {
+      arrow {
+        background-color: var(--base01);
+      }
+      contents {
+        background-color: var(--base01);
+        color: var(--base05);
+      }
+    }
   }
 
   separator {
