@@ -13,7 +13,7 @@ export default function SysTray() {
               self.insert_action_group("dbusmenu", item.actionGroup);
             }}
             tooltipMarkup={bind(item, "tooltipMarkup")}
-            popover={undefined}
+            //popover={}
             //actionGroup={bind(item, "actionGroup").as(ag => ["dbusmenu", ag])}
             menuModel={bind(item, "menuModel")}
           >
