@@ -34,7 +34,6 @@ export default function Dashboard() {
       monitor={bind(hyprland, "focusedMonitor").as((monitor) => monitor.id)}
       onKeyPressed={(self, keyval) => keyval === Gdk.KEY_Escape && self.hide()}
       margin={10}
-      layer={Astal.Layer.BOTTOM}
     >
       <box halign={Gtk.Align.END} valign={Gtk.Align.START} spacing={4}>
         <stack
