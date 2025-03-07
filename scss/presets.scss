@@ -5,6 +5,12 @@ $radius: 10px;
   box-shadow: none;
 }
 
+popover {
+  contents {
+    background-color: green;
+  }
+}
+
 label {
   font-family: "JetBrainsMono Nerd Font Mono";
   font-size: 1rem;
