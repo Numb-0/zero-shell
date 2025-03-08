@@ -13,7 +13,7 @@
   in {
     packages.${system} = {
       ags = ags.packages.${system}.default;
-      astal = ags.packages.${pkgs.system}.io
+      astal = ags.packages.${pkgs.system}.io;
       shell = ags.lib.bundle {
         inherit pkgs;
         # This Points to this Flake root directory 
