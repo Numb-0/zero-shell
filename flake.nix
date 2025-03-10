@@ -17,7 +17,7 @@
       shell = ags.lib.bundle {
         inherit pkgs;
         # This Points to this Flake root directory 
-        src = self;
+        src = ./.;
         name = "zero-shell";
         entry = "app.ts";
         gtk4 = true;
