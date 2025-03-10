@@ -55,6 +55,7 @@ export default function Applauncher() {
         if (!app_name) return;
         // Select the first visible child
         first_visible_child = appButtons.find((appButton) => appButton.visible);
+        first_visible_child?.set_state_flags(Gtk.StateFlags.SELECTED, true)
       }}
       onActivate={(self) => {
         first_visible_child?.activate();
