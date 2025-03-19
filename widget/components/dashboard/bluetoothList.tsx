@@ -1,4 +1,4 @@
-import { bind, timeout } from "astal";
+import { bind, execAsync, timeout } from "astal";
 import { Gtk } from "astal/gtk4";
 import Bluetooth from "gi://AstalBluetooth";
 import ScrolledWindow from "../astalified/ScrolledWindow";
@@ -13,12 +13,12 @@ export default function BluetoothList() {
 
   // DeviceButton method to connect device
   function toggle_device(device: Bluetooth.Device) {
-    print("Toggling device", device.get_name());
+    // print("Toggling device", device.get_name());
     if (bluetooth.adapter.powered) {
       if (!device.paired) {
         device.trusted = true;
         device.pair();
-        device.connect_device(null);
+        //device.connect_device(null);
       } else if (!device.connected) {
         device.connect_device(null);
       } else {
@@ -27,23 +27,38 @@ export default function BluetoothList() {
     }
   }
 
+  function forget_device(device: Bluetooth.Device) {
+    if (device.paired) {
+      execAsync(["bluetoothctl", "remove", device.address]).catch((err) => console.error(err))
+    }
+  }
+
   function DeviceButton({ device }: { device: Bluetooth.Device }): JSX.Element {
     return (
-      <button
-        onButtonPressed={() =>
-          !device.connecting ? toggle_device(device) : null
-        }
-        cssClasses={bind(device, "connected").as((c) =>
-          c ? ["connected"] : [""]
-        )}
-      >
-        <box spacing={4}>
+      <box>
+        <button
+          onButtonPressed={() =>
+            !device.connecting ? toggle_device(device) : null
+          }
+          cssClasses={bind(device, "connected").as((c) =>
+            c ? ["connected"] : [""]
+          )}
+        >
+          <box spacing={4}>
+            <image
+              iconName={custom_icons[device.get_icon()] || device.get_icon()}
+            />
+            <label label={device.alias} />
+          </box>
+        </button>
+        <button
+          onButtonPressed={()=>forget_device(device)}
+        >
           <image
-            iconName={custom_icons[device.get_icon()] || device.get_icon()}
+            iconName={"star"}
           />
-          <label label={device.get_name().split(" ")[0]} />
-        </box>
-      </button>
+        </button>
+      </box>
     );
   }
 
