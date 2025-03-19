@@ -52,10 +52,11 @@ export default function BluetoothList() {
           </box>
         </button>
         <button
+          halign={Gtk.Align.END}
           onButtonPressed={()=>forget_device(device)}
         >
           <image
-            iconName={"star"}
+            iconName={"edit-delete"}
           />
         </button>
       </box>
