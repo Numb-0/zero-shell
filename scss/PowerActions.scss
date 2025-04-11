@@ -1,25 +1,25 @@
 @use "colors" as *;
 @use "presets" as *;
 
-/* .dialog { */
-/*   .titlebar { */
-/*     min-height: 0; */
-/*   } */
-/*   box { */
-/*     padding: 0.2rem; */
-/*   } */
-/*   > box { */
-/*     padding: 0.6rem; */
-/*   } */
-/*   border-radius: $radius; */
-/*   .dialog-action-area { */
-/*     button { */
-/*       border-radius: $radius; */
-/*       padding: 0.4rem; */
-/*       margin: 0.2rem; */
-/*     } */
-/*   } */
-/* } */
+.dialog {
+  .titlebar {
+    min-height: 0;
+  }
+  box {
+    padding: 0.2rem;
+  }
+  > box {
+    padding: 0.6rem;
+  }
+  border-radius: $radius;
+  .dialog-action-area {
+    button {
+      border-radius: $radius;
+      padding: 0.4rem;
+      margin: 0.2rem;
+    }
+  }
+}
 
 .PowerActions {
   box {
